@@ -35,8 +35,8 @@ public class Main extends JFrame implements Runnable {
 	private boolean test = false;
 	
 	//Here
-	private boolean startlevel = true;
-	private boolean mainMenu = false;
+	private boolean startlevel = false;
+	private boolean mainMenu = true;
 	
 	
 	ImageIcon icon = new ImageIcon(getClass().getResource("/bg.png"));
@@ -119,7 +119,7 @@ public class Main extends JFrame implements Runnable {
 
 				p.setXDirection(+8);
 			}
-			if (kc == e.VK_SPACE && startlevel == false && mainMenu == true) {
+			if (kc == e.VK_ENTER && startlevel == false && mainMenu == true) {
 				startlevel = true;
 				mainMenu = false;
 				p.charX = 400;
