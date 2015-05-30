@@ -97,7 +97,7 @@ public class Sanik extends Canvas implements Runnable {
 		
 		Graphics g = b.getDrawGraphics();
 		g.setColor(new Color(10, 10, 240));
-		g.fillRect(0, 0, WIDTH, HEIGHT);
+		g.fillRect(0, 0, getWidth(), getHeight());
 		
 		gfx.renderBackground(g);
 		gfx.renderForeground(g);
