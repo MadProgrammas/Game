@@ -3,13 +3,14 @@ package com.sanik.game;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
 
 public class Sanik extends Canvas implements Runnable {
-
+	
 	//Fields
 	private static final int HEIGHT = 600;
 	private static final int WIDTH = 800;
@@ -118,7 +119,6 @@ public class Sanik extends Canvas implements Runnable {
 		int updates = 0;
 		int frames = 0;
 		long timer = System.currentTimeMillis();
-		
 		
 		while(running){
 			
