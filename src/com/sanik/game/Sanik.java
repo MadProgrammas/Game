@@ -1,7 +1,10 @@
 package com.sanik.game;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
 
@@ -11,14 +14,14 @@ public class Sanik extends Canvas implements Runnable {
 	private static final int HEIGHT = 600;
 	private static final int WIDTH = 800;
 	private static final String TITLE = "Sanik Speyd Advantur";
+	private static Sanik game = new Sanik();
 	
 	private boolean running = false;
 	private Thread t1;
+	private Renderer gfx;
 	
 	//Main method
 	public static void main(String[] args){
-		
-		Sanik game = new Sanik();
 		
 		game.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		game.setMaximumSize(new Dimension(WIDTH, HEIGHT));
@@ -39,6 +42,11 @@ public class Sanik extends Canvas implements Runnable {
 	public Sanik(){
 		
 		
+	}
+	
+	public static Sanik getInstance(){
+		
+		return game;
 	}
 	
 	private synchronized void start(){
@@ -70,6 +78,7 @@ public class Sanik extends Canvas implements Runnable {
 	
 	private void init(){
 		
+		gfx = new Renderer();
 	}
 	
 	private void tick(){
@@ -78,6 +87,23 @@ public class Sanik extends Canvas implements Runnable {
 	
 	private void render(){
 		
+		BufferStrategy b = this.getBufferStrategy();
+		
+		if(b == null){
+			
+			createBufferStrategy(3);
+			return;
+		}
+		
+		Graphics g = b.getDrawGraphics();
+		g.setColor(new Color(10, 10, 240));
+		g.fillRect(0, 0, WIDTH, HEIGHT);
+		
+		gfx.renderBackground(g);
+		gfx.renderForeground(g);
+		
+		g.dispose();
+		b.show();
 	}
 
 	//Run method
