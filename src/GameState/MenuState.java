@@ -25,7 +25,7 @@ public class MenuState extends GameState{
 		
 		try{
 			
-			bg = new Background("/res/bg.png", 1);
+			bg = new Background("/bg.png", 1);
 			bg.setVector(-0.1, 0);
 			
 			titleColor = new Color(120, 0, 0);
@@ -62,7 +62,7 @@ public class MenuState extends GameState{
 				g.setColor(Color.RED);
 			}
 			
-			g.drawString(options[i], 145, 140 + i + 15);
+			g.drawString(options[i], 145, 140 + i * 15);
 		}
 	}
 	

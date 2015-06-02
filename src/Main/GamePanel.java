@@ -75,11 +75,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			draw();
 			drawToScreen();
 			
-			elapsed = System.nanoTime();
+			elapsed = System.nanoTime() - start;
 			wait = targetTime - elapsed / 1000000;
 			
 			try{
-				t1.sleep(wait);
+				Thread.sleep(wait);
 			}catch(Exception e){
 				e.printStackTrace();
 			}
@@ -99,20 +99,19 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	private void drawToScreen(){
 		
 		Graphics g2 = getGraphics();
-		g2.drawImage(image, 0, 0, null);
+		g2.drawImage(image, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);
 		g2.dispose();
 	}
 	
 	public void keyTyped(KeyEvent e){}
+	
 	public void keyPressed(KeyEvent e){
 		
 		gsm.keyPressed(e.getKeyCode());
 	}
+	
 	public void keyReleased(KeyEvent e){
 		
 		gsm.keyReleased(e.getKeyCode());
 	}
-	
-	
-	
 }
